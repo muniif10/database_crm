@@ -9,6 +9,7 @@ Group Project for Web App Development
 Spring Boot, Thymeleaf, MySQL, Docker
 
 Do change the application.properties to set up the database connection.
+# Images
 ![](https://github.com/muniif10/database_crm/blob/master/images/UI1.png?raw=true)
 ![](https://github.com/muniif10/database_crm/blob/master/images/UI2.png)
 ![](https://github.com/muniif10/database_crm/blob/master/images/UI3.png)
