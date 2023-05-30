@@ -1,0 +1,23 @@
+@media only screen and (max-width: 1000px) {
+    .grow{
+        height: 59px;
+        overflow: hidden;
+        transition-property: height;
+        transition-duration: 0.5s;
+        transition-timing-function: ease-in-out;
+    }
+    .grow:hover{
+        height: 150px;
+    }
+}
+.grow{
+
+    height: 70px;
+    overflow: hidden;
+    transition-property: height;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+}
+.grow:hover{
+    height: 150px;
+}

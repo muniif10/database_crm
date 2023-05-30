@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class MainController {
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
     private RegionRepository regionRepository;
 
     public MainController(RegionRepository regionRepository) {
@@ -24,6 +25,11 @@ public class MainController {
     public String home(Model model){
         model.addAttribute("customers", customerRepository.findAll());
         return "index";
+    }
+    @GetMapping("/beauty_page")
+    public String beauty(Model model){
+        model.addAttribute("customers",customerRepository.findAll());
+        return "card_place";
     }
 
 //    @GetMapping("/") // Refers to the URL append after domain name
