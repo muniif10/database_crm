@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@1,700&display=swap');
+h1{
+    font-family: 'Lobster Two', cursive;
+}
 @media only screen and (max-width: 1000px) {
     .grow{
         height: 59px;
@@ -7,17 +11,18 @@
         transition-timing-function: ease-in-out;
     }
     .grow:hover{
-        height: 150px;
+        height: 450px;
     }
 }
 .grow{
 
-    height: 70px;
+    height: 100px;
     overflow: hidden;
     transition-property: height;
     transition-duration: 0.5s;
     transition-timing-function: ease-in-out;
 }
 .grow:hover{
-    height: 150px;
+    height: 170px;
 }
+

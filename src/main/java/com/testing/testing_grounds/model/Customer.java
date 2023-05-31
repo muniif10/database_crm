@@ -22,6 +22,30 @@ public class Customer {
     @Column(nullable = false)
     private String department;
 
+    @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
+    private String phonenumber;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+
+
     @NotEmpty(message = "Region cant be blank")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "region_id", nullable = false)
@@ -57,6 +81,7 @@ public class Customer {
 
 
     public Region getRegion() {
+
         return region;
     }
 
