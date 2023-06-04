@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -25,9 +25,9 @@ public class MainController {
     @RequestMapping("/")
     public String home(Model model){
         model.addAttribute("customers", customerRepository.findAll());
-        return "index";
+        return "list";
     }
-    @GetMapping("/beauty_page")
+    @GetMapping("/card_page")
     public String beauty(Model model){
         model.addAttribute("customers",customerRepository.findAll());
         return "card_place";
@@ -40,20 +40,25 @@ public class MainController {
 //        return "index"; // This refers to the name of the HTML template.
 //    }
     @GetMapping("/new_customer")
-    public String space(Model model){
+    public String new_customer_fields(Model model){
         model.addAttribute("customer", new Customer());
-        model.addAttribute("region",regionRepository.findAll());
+        model.addAttribute("regions",regionRepository.findAll());
         return "new_customer";
     }
     @PostMapping("/add")
-    public String addCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult result, Model model){
+    public String addCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult result,Model model){
+
+        if(customer.getRegion() == null){
+//            result.addError(new ObjectError("customer","Please select region."));
+            result.addError(new FieldError("customer","region","Please select a region."));
+            // Returning from error removed the region list from the context. :(
+            model.addAttribute("regions",regionRepository.findAll());
+            return "new_customer";
+        }
         if(result.hasErrors()){
             return "new_customer";
         }
-//        if(customer.getRegion() == null){
-//            result.addError(new ObjectError("region","Please select region."));
-//            return "new_customer";
-//        }
+
         customerRepository.save(customer);
         return "redirect:/";
     }
@@ -62,6 +67,7 @@ public class MainController {
     public String editForm(Model model, @PathVariable Integer id){
         Customer customer = customerRepository.findById((int)id).orElseThrow(()->new IllegalArgumentException("Invalid Customer ID: " + id));
         model.addAttribute("customer", customer);
+        model.addAttribute("regions",regionRepository.findAll());
         return "edit_customer";
     }
     @PostMapping("/edit_customer/{id}")

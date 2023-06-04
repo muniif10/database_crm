@@ -3,7 +3,7 @@
 <head>
 
     <title>RelManage - About</title>
-    <link th:href="@{/styling.css}" rel="stylesheet" >
+    <link th:href="@{/styling.css}" rel="stylesheet">
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
           rel="stylesheet">
@@ -14,37 +14,58 @@
 </head>
 <body>
 <div class="grow">
-    <div class=" mt-3 d-flex justify-content-center ">
-        <h1 style="font-size: 4rem">Customer Relation Management</h1>
+    <div class=" mt-3 d-flex justify-content-center">
+        <h1 style="font-size: 4rem"><img alt="" style="width: 69px;
+    margin-bottom: 11px;
+    margin-right: 6px;" th:src="@{/LOGO.png}">Customer Relation Management</h1>
     </div>
     <div class=" mt-3 d-flex justify-content-center">
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <a type="button" th:href="@{/}"  class="btn btn-info"><svg style="display: block" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
-                <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
-            </svg></a>
-            <a type="button" th:href="@{/beauty_page}" class="btn btn-info"><svg style="display: block" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-heading" viewBox="0 0 16 16">
-                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z"/>
-            </svg></a>
+        <div aria-label="Basic example" class="btn-group" role="group">
+            <a class="btn btn-info" th:href="@{/}" type="button">
+                <svg class="bi bi-house-door-fill" fill="currentColor" height="16" style="display: block"
+                     viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
+                </svg>
+            </a>
+            <a class="btn btn-info" th:href="@{/card_page}" type="button">
+                <svg class="bi bi-card-heading" fill="currentColor" height="16" style="display: block"
+                     viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                    <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z"/>
+                </svg>
+            </a>
 
         </div>
     </div>
 </div>
-<div style="margin:auto; max-width: 1000px"  class=" mt-3 d-flex justify-content-center flex-wrap">
-    <div th:each="customer : ${customers}"  class="card" style="width: 18rem; margin: 10px;">
+<div style="margin:auto; max-width: 1000px" class=" mt-3 d-flex justify-content-center flex-wrap">
+    <div th:each="customer : ${customers}" class="card" style="width: 18rem; margin: 10px;">
         <div class="card-body ">
-            <h5  th:text="${customer.name}" class="card-title">Card title</h5>
-           <i> <p th:text="${customer.getAddress()}" class="card-text"/></i>
+            <h5 th:text="${#strings.capitalizeWords(#strings.toLowerCase(customer.name))}" class="card-title">Card
+                title</h5>
+            <i><p th:text="${customer.getAddress()}" class="card-text"/></i>
             <b><p th:text="${customer.getDepartment()}" class="card-text"/></b>
             <hr/>
             <div class="d-flex justify-content-center align-self-end">
-            <a th:href="'mailto:'+${customer.getEmail()}" class="btn btn-primary">Email</a>
-            <a  th:href="'tel:+60'+${customer.getPhonenumber()}" class="btn btn-primary mx-1">Call</a>
-            <a href="#" class="btn btn-primary">Fax</a>
+                <a th:href="'mailto:'+${customer.getEmail()}" class="btn btn-primary">Email</a>
+                <a th:href="'tel:+60'+${customer.getPhonenumber()}" class="btn btn-primary mx-1">Call</a>
+                <a href="#" class="btn btn-primary">Fax</a>
             </div>
         </div>
     </div>
-
+    <div class="card" th:if="${customers.empty}" style="width: 18rem; margin: 10px;">
+        <div class="card-body ">
+            <h5 th:text="'No Customer'" class="card-title">Card title</h5>
+            <i><p th:text="'is'" class="card-text"/></i>
+            <b><p th:text="'present...'" class="card-text"/></b>
+            <hr/>
+            <div class="d-flex justify-content-center align-self-end">
+                <a th:href="'#'" class="btn btn-primary">Email</a>
+                <a th:href="'#'" class="btn btn-primary mx-1">Call</a>
+                <a href="#" class="btn btn-primary">Fax</a>
+            </div>
+        </div>
+    </div>
 
 
 </div>

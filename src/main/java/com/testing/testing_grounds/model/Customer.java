@@ -1,7 +1,6 @@
 package com.testing.testing_grounds.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 
 @Entity
@@ -10,8 +9,9 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @NotEmpty(message = "Name cannot be empty")
+
     @Column(nullable = false)
+    @NotEmpty(message = "Name cannot be empty")
     private String name;
 
     @NotEmpty(message = "Address cannot be empty")
@@ -22,9 +22,11 @@ public class Customer {
     @Column(nullable = false)
     private String department;
 
+    @NotEmpty(message = "Email cannot be empty")
     @Column(nullable = false)
     private String email;
 
+    @NotEmpty(message = "Phone Number cannot be empty")
     @Column(nullable = false)
     private String phonenumber;
 
@@ -45,8 +47,6 @@ public class Customer {
     }
 
 
-
-    @NotEmpty(message = "Region cant be blank")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "region_id", nullable = false)
     private Region region;
@@ -58,8 +58,9 @@ public class Customer {
 
     public Customer() {
         name = "";
-        address= "";
-        department = "";;
+        address = "";
+        department = "";
+        ;
     }
 
 

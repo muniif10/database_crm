@@ -29,8 +29,9 @@ public class Region {
         this.customers = customers;
     }
 
-    @OneToMany(mappedBy = "region",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "region", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Customer> customers;
+
     public void setId(Integer id) {
         this.id = id;
     }

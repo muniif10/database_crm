@@ -16,17 +16,25 @@
 
 <div class="grow">
     <div class=" mt-3 d-flex justify-content-center">
-        <h1 style="font-size: 4rem">Customer Relation Management</h1>
+        <h1 style="font-size: 4rem"><img alt="" style="width: 69px;
+    margin-bottom: 11px;
+    margin-right: 6px;" th:src="@{/LOGO.png}">Customer Relation Management</h1>
     </div>
     <div class=" mt-3 d-flex justify-content-center">
-        <div class="btn-group" role="group" aria-label="Basic example">
-            <a type="button" th:href="@{/}"  class="btn btn-info"><svg style="display: block" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
-                <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
-            </svg></a>
-            <a type="button" th:href="@{/beauty_page}" class="btn btn-info"><svg style="display: block" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-heading" viewBox="0 0 16 16">
-                <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
-                <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z"/>
-            </svg></a>
+        <div aria-label="Basic example" class="btn-group" role="group">
+            <a class="btn btn-info" th:href="@{/}" type="button">
+                <svg class="bi bi-house-door-fill" fill="currentColor" height="16" style="display: block"
+                     viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5Z"/>
+                </svg>
+            </a>
+            <a class="btn btn-info" th:href="@{/card_page}" type="button">
+                <svg class="bi bi-card-heading" fill="currentColor" height="16" style="display: block"
+                     viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                    <path d="M3 8.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5v-1z"/>
+                </svg>
+            </a>
 
         </div>
     </div>
@@ -66,7 +74,7 @@
 <!--</nav>-->
 
 <div class="container m-5">
-    <h1>New Customer Form</h1>
+    <h1>Edit Customer Form</h1>
     <form action="#" method="post" th:action="@{/edit_customer/{id}(id=${customer.id})}" th:object="${customer}">
         <div class="form-group col-md-6"><label class="col-form-label" for="name">Name</label><input
                 class="form-control" id="name" placeholder="Full Name" th:field="*{name}" type="text"><span
@@ -91,12 +99,14 @@
         <div class="form-group col-md-6">
             <label class="col-form-label" for="region">Region</label>
 
-            <select id="region" class="form-select" th:field="*{region}">
-            <option selected th:value="-1">Select customer's region</option>
-            <option th:value="'0'" th:text="Asia"></option>
-            <option th:value="'1'" th:text="Europe"></option>
-            <option th:value="'2'" th:text="America"></option>
-        </select> </div>
+            <select id="region" th:field="*{region}"   class="form-select" >
+<!--                <option selected th:value="-1">Select customer's region</option>-->
+                <!--                <option th:value="'0'" th:text="Asia"></option>-->
+                <!--                <option th:value="'1'" th:text="Europe"></option>-->
+                <!--                <option th:value="'2'" th:text="America"></option>-->
+                <option th:each="region : ${regions}" th:value="${region.id}" th:text="${region.getRegion_name()}" ></option>
+
+            </select> </div>
 
         <div class="container my-5"><input class="btn btn-success" th:value="Save" type="submit"><button th:href="@{/}" style="margin-left: 5px;" class="btn btn-primary">Back</button>
         </div>
