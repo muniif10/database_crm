@@ -22,12 +22,16 @@ public class MainController {
         this.regionRepository = regionRepository;
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/customers")
     public String home(Model model){
         model.addAttribute("customers", customerRepository.findAll());
         return "list";
     }
-    @GetMapping("/card_page")
+    @RequestMapping("/")
+    public String homeDir(){
+        return "home";
+    }
+    @GetMapping("/customers/card_page")
     public String beauty(Model model){
         model.addAttribute("customers",customerRepository.findAll());
         return "card_place";
@@ -39,13 +43,13 @@ public class MainController {
 //        model.addAttribute("customers", customerRepository.findAll());
 //        return "index"; // This refers to the name of the HTML template.
 //    }
-    @GetMapping("/new_customer")
+    @GetMapping("/customers/new_customer")
     public String new_customer_fields(Model model){
         model.addAttribute("customer", new Customer());
         model.addAttribute("regions",regionRepository.findAll());
         return "new_customer";
     }
-    @PostMapping("/add")
+    @PostMapping("/customers/add")
     public String addCustomer(@Valid @ModelAttribute("customer") Customer customer, BindingResult result,Model model){
 
         if(customer.getRegion() == null){
@@ -60,29 +64,34 @@ public class MainController {
         }
 
         customerRepository.save(customer);
-        return "redirect:/";
+        return "redirect:/customers";
     }
 
-    @GetMapping("/edit/{id}")
+    @GetMapping("/customers/edit/{id}")
     public String editForm(Model model, @PathVariable Integer id){
+
         Customer customer = customerRepository.findById((int)id).orElseThrow(()->new IllegalArgumentException("Invalid Customer ID: " + id));
         model.addAttribute("customer", customer);
         model.addAttribute("regions",regionRepository.findAll());
         return "edit_customer";
     }
-    @PostMapping("/edit_customer/{id}")
+    @PostMapping("/customers/edit_customer/{id}")
     public String editCustomer(@Valid @ModelAttribute Customer customer, BindingResult result, Model model,@PathVariable Integer id){
+        if(result.hasErrors()){
+            model.addAttribute("regions",regionRepository.findAll());
+            return "edit_customer";
+        }
         model.addAttribute("customers",customerRepository.findAll());
         customerRepository.save(customer);
-        return "redirect:/";
+        return "redirect:/customers";
     }
 
-    @GetMapping("/delete/{id}")
+    @GetMapping("/customers/delete/{id}")
     public String deleteCustomer(@PathVariable("id") long id, Model model){
         Customer customer = customerRepository.findById((int)id).orElseThrow(()-> new IllegalArgumentException("Invalid Customer ID: "+ id));
         customerRepository.delete(customer);
         model.addAttribute("customers",customerRepository.findAll());
-        return "redirect:/";
+        return "redirect:/customers";
     }
 
 
