@@ -6,7 +6,7 @@ pipeline {
         GITHUB_CREDS = credentials('github-token')
         GH_TOKEN = credentials('gh_token')
         REPO = 'muniif10/database_crm'   // GitHub repo
-        RELEASE_VERSION = 'v1.0.18'       // Release/tag version
+        RELEASE_VERSION = 'v1.0.19'       // Release/tag version
     }
 
     tools {
@@ -54,7 +54,7 @@ pipeline {
             steps {
                 sh '''
 
-                gh release create ${RELEASE_VERSION} target/*.jar \
+                GH_TOKEN=${GH_TOKEN} gh release create ${RELEASE_VERSION} target/*.jar \
                     --repo ${REPO} \
                     --title "Release ${RELEASE_VERSION}" \
                     --notes "Automated release from Jenkins"
