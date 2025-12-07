@@ -4,6 +4,8 @@ pipeline {
     
     environment {
         GITHUB_CREDS = credentials('github-token')
+        REPO = 'muniif10/database_crm'   // GitHub repo
+        RELEASE_VERSION = 'v1.0.5'       // Release/tag version
     }
 
     tools {
@@ -34,20 +36,34 @@ pipeline {
                 sh "mvn package -DskipTests" // Create the executable JAR
             }
         }
-         stage('Tag & Push Release') {
+ stage('Tag & Push') {
             steps {
                 sh '''
                 git config user.name "Jenkins"
-                git config user.email "jenkins@example.com"
+                git config user.email "jenkins@magico.com"
 
-                # Tag the release
-                git tag -a v1.0.3 -m "Release v1.0.3"
+                git tag -a ${RELEASE_VERSION} -m "Release ${RELEASE_VERSION}"
 
-                # Push tag to GitHub using credentials
-                git push https://${GITHUB_CREDS_USR}:${GITHUB_CREDS_PSW}@github.com/muniif10/database_crm.git --tags
+                git push https://${GITHUB_CREDS}@github.com/${REPO}.git --tags
                 '''
             }
         }
+
+        stage('Create GitHub Release') {
+            steps {
+                sh '''
+                # Authenticate GitHub CLI
+                echo $GITHUB_CREDS | gh auth login --with-token
+
+                # Create release and upload JAR
+                gh release create ${RELEASE_VERSION} target/*.jar \
+                    --repo ${REPO} \
+                    --title "Release ${RELEASE_VERSION}" \
+                    --notes "Automated release from Jenkins"
+                '''
+            }
+        }
+    }
 
     //     stage('Deploy') {
     //         // This stage can be customized based on your deployment strategy
