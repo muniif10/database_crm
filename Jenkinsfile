@@ -65,17 +65,6 @@ pipeline {
         }
     }
 
-    //     stage('Deploy') {
-    //         // This stage can be customized based on your deployment strategy
-    //         // Examples: Deploying to a remote server, Docker image creation, artifact deployment to Nexus
-    //         // steps {
-    //         //     echo "Deploying the Spring Boot application..."
-    //         //     // Example: Copying the JAR to a remote server (requires SSH agent or similar)
-    //         //     // sh "scp target/your-app.jar user@remote-host:/path/to/deploy"
-    //         // }
-    //     }
-    }
-
     post {
         always {
             echo 'Pipeline finished.'
