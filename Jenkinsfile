@@ -6,7 +6,7 @@ pipeline {
         GITHUB_CREDS = credentials('github-token')
         // GH_TOKEN = credentials('github-token')
         REPO = 'muniif10/database_crm'   // GitHub repo
-        RELEASE_VERSION = 'v1.0.12'       // Release/tag version
+        RELEASE_VERSION = 'v1.0.13'       // Release/tag version
     }
 
     tools {
@@ -54,7 +54,7 @@ pipeline {
             steps {
                 sh '''
                 # Authenticate GitHub CLI
-                echo $GH_TOKEN | gh auth login --with-token
+                echo $GITHUB_CREDS | gh auth login --with-token
 
                 # Create release and upload JAR
                 gh release create ${RELEASE_VERSION} target/*.jar \
