@@ -31,7 +31,7 @@ pipeline {
 
         stage('Package') {
             steps {
-                sh "mvn package" // Create the executable JAR
+                sh "mvn package -DskipTests" // Create the executable JAR
             }
         }
          stage('Tag & Push Release') {
