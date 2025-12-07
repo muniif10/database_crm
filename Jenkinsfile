@@ -6,7 +6,7 @@ pipeline {
         GITHUB_CREDS = credentials('github-token')
         GH_TOKEN = credentials('gh_token')
         REPO = 'muniif10/database_crm'   // GitHub repo
-        RELEASE_VERSION = 'v1.0.13'       // Release/tag version
+        RELEASE_VERSION = 'v1.0.14'       // Release/tag version
     }
 
     tools {
