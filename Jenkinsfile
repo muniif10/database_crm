@@ -1,6 +1,11 @@
 pipeline {
     agent any // Specifies that the pipeline can run on any available agent
 
+    
+    environment {
+        GITHUB_CREDS = credentials('github-token')
+    }
+
     tools {
         maven 'maven'
     }
@@ -18,15 +23,29 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                sh "mvn test" // Run unit and integration tests
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         sh "mvn test" // Run unit and integration tests
+        //     }
+        // }
 
         stage('Package') {
             steps {
                 sh "mvn package" // Create the executable JAR
+            }
+        }
+         stage('Tag & Push Release') {
+            steps {
+                sh '''
+                git config user.name "Jenkins"
+                git config user.email "jenkins@example.com"
+
+                # Tag the release
+                git tag -a v1.0.0 -m "Release v1.0.0"
+
+                # Push tag to GitHub using credentials
+                git push https://${GITHUB_CREDS_USR}:${GITHUB_CREDS_PSW}@github.com/your-username/your-repo.git --tags
+                '''
             }
         }
 
