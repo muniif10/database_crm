@@ -53,7 +53,7 @@ pipeline {
             steps {
                 sh '''
                 # Authenticate GitHub CLI
-                echo $GITHUB_CREDS | gh auth login --with-token
+                # echo $GITHUB_CREDS | gh auth login --with-token
 
                 # Create release and upload JAR
                 gh release create ${RELEASE_VERSION} target/*.jar \
