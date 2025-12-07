@@ -1,6 +1,9 @@
 pipeline {
     agent any // Specifies that the pipeline can run on any available agent
 
+    tools {
+        maven 'Maven'
+    }
 
     stages {
         stage('Checkout') {
