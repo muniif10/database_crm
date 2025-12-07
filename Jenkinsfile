@@ -44,7 +44,7 @@ pipeline {
                 git tag -a v1.0.0 -m "Release v1.0.0"
 
                 # Push tag to GitHub using credentials
-                git push https://${GITHUB_CREDS_USR}:${GITHUB_CREDS_PSW}@github.com/your-username/your-repo.git --tags
+                git push https://${GITHUB_CREDS_USR}:${GITHUB_CREDS_PSW}@github.com/muniif10/database_crm.git --tags
                 '''
             }
         }
