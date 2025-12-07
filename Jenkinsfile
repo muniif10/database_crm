@@ -6,7 +6,7 @@ pipeline {
         GITHUB_CREDS = credentials('github-token')
         GH_TOKEN = credentials('gh_token')
         REPO = 'muniif10/database_crm'   // GitHub repo
-        RELEASE_VERSION = 'v1.0.19'       // Release/tag version
+        RELEASE_VERSION = 'v1.0.20'       // Release/tag version
     }
 
     tools {
@@ -50,14 +50,25 @@ pipeline {
             }
         }
 
-        stage('Create GitHub Release') {
+         stage('Create GitHub Release & Upload JAR') {
             steps {
                 sh '''
+                # Create release
+                RESPONSE=$(curl -s -X POST \
+                  -H "Authorization: token ${GH_TOKEN}" \
+                  -H "Content-Type: application/json" \
+                  -d "{\"tag_name\":\"${RELEASE_VERSION}\",\"name\":\"${RELEASE_VERSION}\",\"body\":\"Automated release from Jenkins\"}" \
+                  https://api.github.com/repos/${REPO}/releases)
 
-                GH_TOKEN=${GH_TOKEN} gh release create ${RELEASE_VERSION} target/*.jar \
-                    --repo ${REPO} \
-                    --title "Release ${RELEASE_VERSION}" \
-                    --notes "Automated release from Jenkins"
+                # Extract upload URL
+                UPLOAD_URL=$(echo $RESPONSE | jq -r .upload_url | sed "s/{?name,label}//")
+
+                # Upload JAR
+                curl -s -X POST \
+                  -H "Authorization: token ${GITHUB_TOKEN}" \
+                  -H "Content-Type: application/java-archive" \
+                  --data-binary @"target/*.jar" \
+                  "$UPLOAD_URL?name=$(basename target/*.jar)"
                 '''
             }
         }
