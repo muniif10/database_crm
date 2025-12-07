@@ -11,19 +11,19 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh "${MAVEN_HOME}/bin/mvn clean install -DskipTests" // Build the application, skipping tests
+                sh "mvn clean install -DskipTests" // Build the application, skipping tests
             }
         }
 
         stage('Test') {
             steps {
-                sh "${MAVEN_HOME}/bin/mvn test" // Run unit and integration tests
+                sh "mvn test" // Run unit and integration tests
             }
         }
 
         stage('Package') {
             steps {
-                sh "${MAVEN_HOME}/bin/mvn package" // Create the executable JAR
+                sh "mvn package" // Create the executable JAR
             }
         }
 
